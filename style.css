@@ -1,0 +1,153 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.slider {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  font-family: sans-serif;
+}
+.slider-item {
+  display: flex;
+  position: absolute;
+  inset: 0 0 0 0;
+}
+.slider-item-content {
+  opacity: 0;
+  transition: 1s ease;
+}
+.slider-item-content::after {
+  content: "";
+  background: linear-gradient(to top, #000, transparent);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.slider-item-content img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: absolute;
+  inset: 0 0 0 0;
+  width: 100%;
+  height: 100%;
+}
+.slider-item-content-description {
+  position: absolute;
+  top: 30%;
+  left: 5%;
+  z-index: 1;
+  padding: 10px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  opacity: 0;
+}
+@media screen and (max-width: 678px) {
+  .slider-item-content-description {
+    top: 20%;
+  }
+}
+.slider-item-content-description h2 {
+  font-weight: 1000;
+  font-size: 4rem;
+}
+@media screen and (max-width: 678px) {
+  .slider-item-content-description h2 {
+    font-size: 2rem;
+  }
+}
+.slider-item-content-description p {
+  font-size: 1rem;
+}
+.slider-item-content .slider-item-content-description.active h2,
+.slider-item-content .slider-item-content-description.active p {
+  filter: blur(10px);
+  transform: translateY(20px);
+  animation: showDescription 0.5s 0.1s ease-in-out 1 forwards;
+  opacity: 0;
+}
+.slider-item-content .slider-item-content-description.active p {
+  animation-delay: 0.5s;
+  text-transform: capitalize;
+}
+.slider-item-content .slider-item-content-description.active {
+  width: clamp(300px, 100%, 500px);
+}
+@keyframes showDescription {
+  to {
+    filter: blur(0);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.slider-item .active {
+  animation: fromZero 0.5s ease 1;
+  opacity: 1;
+}
+.slider .arrow-container {
+  display: flex;
+  gap: 5px;
+  position: absolute;
+  top: 20%;
+  right: 5%;
+  z-index: 2;
+}
+@media screen and (max-width: 678px) {
+  .slider .arrow-container {
+    top: 10%;
+  }
+}
+.slider .arrow-container .btn {
+  cursor: pointer;
+  padding: 10px;
+  color: #fff;
+  font-size: 2rem;
+  background: rgba(0, 0, 0, 0.6784313725);
+  transition: 0.5s ease;
+  border-radius: 10px;
+}
+.slider .arrow-container .btn:hover {
+  background: rgba(255, 247, 247, 0.6784313725);
+}
+.slider .arrow-container .btn:focus {
+  background-color: #000;
+}
+.slider .arrow-container .btn:nth-child(1) {
+  rotate: 180deg;
+}
+.slider .thumbnail {
+  display: flex;
+  position: absolute;
+  bottom: 10%;
+  z-index: 100;
+  gap: 5px;
+  overflow: auto;
+  width: 100%;
+  justify-content: flex-end;
+  padding: 0 20px;
+  scrollbar-width: none;
+}
+@media screen and (max-width: 678px) {
+  .slider .thumbnail {
+    justify-content: flex-start;
+  }
+}
+.slider .thumbnail img {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  cursor: pointer;
+}
+.slider .thumbnail .thumbnail-item {
+  filter: brightness(0.1);
+  flex-shrink: 0;
+}
+.slider .thumbnail .thumbnail-item.active {
+  filter: brightness(1);
+}/*# sourceMappingURL=style.css.map */
